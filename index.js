@@ -7,42 +7,44 @@ import {
 } from './pokemon-api.js';
 import {after, pick, pickOne, displayRegion, displayPokemons} from './utils.js';
 
-getRegions()
-  .catch(handleErrors)
-  .then(regions => {
-    const region = pickOne(regions);
+getRegions((error, regions) => {
+  if (error) {
+    console.error(error);
+    return;
+  }
+  const region = pickOne(regions);
 
-    getRegionDetails(region, (error, regionDetails) => {
+  getRegionDetails(region, (error, regionDetails) => {
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    const pokedex =
+      regionDetails.pokedexes.length === 0
+        ? defaultPokedex
+        : pickOne(regionDetails.pokedexes);
+
+    displayRegion(regionDetails, pokedex);
+
+    getPokemonsFromPokedex(pokedex, (error, pokemonsList) => {
       if (error) {
         console.error(error);
         return;
       }
 
-      const pokedex =
-        regionDetails.pokedexes.length === 0
-          ? defaultPokedex
-          : pickOne(regionDetails.pokedexes);
+      const randomPokemons = pick(pokemonsList, 8);
 
-      displayRegion(regionDetails, pokedex);
-
-      getPokemonsFromPokedex(pokedex, (error, pokemonsList) => {
+      getPokemonsDetails(randomPokemons, (error, pokemons) => {
         if (error) {
           console.error(error);
           return;
         }
-
-        const randomPokemons = pick(pokemonsList, 8);
-
-        getPokemonsDetails(randomPokemons, (error, pokemons) => {
-          if (error) {
-            console.error(error);
-            return;
-          }
-          displayPokemons(pokemons);
-        });
+        displayPokemons(pokemons);
       });
     });
   });
+});
 
 function getPokemonsDetails(pokemons, callback) {
   let pokemonsDetails = [];
