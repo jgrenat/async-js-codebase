@@ -20,11 +20,7 @@ getRegions((error, regions) => {
       return;
     }
 
-    const pokedex =
-      regionDetails.pokedexes.length === 0
-        ? defaultPokedex
-        : pickOne(regionDetails.pokedexes);
-
+    const pokedex = pickPokedex(regionDetails);
     displayRegion(regionDetails, pokedex);
 
     getPokemonsFromPokedex(pokedex, (error, pokemonsList) => {
@@ -66,4 +62,10 @@ function getPokemonsDetails(pokemons, callback) {
       done();
     }),
   );
+}
+
+function pickPokedex(regionDetails) {
+  return regionDetails.pokedexes.length === 0
+    ? defaultPokedex
+    : pickOne(regionDetails.pokedexes);
 }
