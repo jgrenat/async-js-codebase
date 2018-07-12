@@ -45,6 +45,7 @@ getRegions((error, regions) => {
 
 function getPokemonsDetails(pokemons, callback) {
   let pokemonsDetails = [];
+  let thrownError;
   const done = after(pokemons.length, () => {
     if (thrownError) {
       callback(thrownError, null);
