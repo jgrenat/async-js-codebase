@@ -45,3 +45,7 @@ function makeRequest(url, callback) {
   request.open('GET', url);
   request.send();
 }
+
+export const defaultPokedex = {
+  name: 'kanto',
+};

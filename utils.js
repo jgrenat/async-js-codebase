@@ -19,6 +19,15 @@ export function pick(elements, count) {
 }
 
 export function displayRegion(region, pokedex) {
+  const template = `
+    <div>
+      <h2>
+        Some Pokemons for the ${region.name} 
+        (${region.names[0].name}) region:
+      </h2>
+    </div>
+  `;
+  document.getElementById('js-region').innerHTML = template;
   console.log(region, pokedex);
 }
 
