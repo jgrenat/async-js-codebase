@@ -37,7 +37,7 @@ function makeRequest(url, callback) {
       if (request.status === 200) {
         callback(null, request.response);
       } else {
-        callback(request.statusText);
+        callback('Error ' + request.status);
       }
     }
   };
