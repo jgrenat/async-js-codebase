@@ -1,18 +1,19 @@
-const ENDPOINT = 'https://pokeapi.co/api/v2';
+const ENDPOINT = 'https://pokeo.surge.sh/api/v2';
+const ENDPOINT_SUFFIX = 'index.json';
 
 export function getRegions(callback) {
-  makeRequest(`${ENDPOINT}/region/`, (error, response) => {
+  makeRequest(`${ENDPOINT}/region/${ENDPOINT_SUFFIX}`, (error, response) => {
     callback(error, response && response.results);
   });
 }
 
 export function getRegionDetails(region, callback) {
-  makeRequest(`${ENDPOINT}/region/${region.name}`, callback);
+  makeRequest(`${region.url}/${ENDPOINT_SUFFIX}`, callback);
 }
 
 export function getPokemonsFromPokedex(pokedex, callback) {
   makeRequest(
-    `${ENDPOINT}/pokedex/${pokedex.name}`,
+    `${pokedex.url}/${ENDPOINT_SUFFIX}`,
     (error, pokedexDetails) => {
       if (error) {
         callback(error, null);
@@ -27,7 +28,7 @@ export function getPokemonsFromPokedex(pokedex, callback) {
 }
 
 export function getPokemonDetails(pokemon, callback) {
-  makeRequest(`${ENDPOINT}/pokemon/${pokemon.name}`, callback);
+  makeRequest(`${pokemon.url}/${ENDPOINT_SUFFIX}`, callback);
 }
 
 function makeRequest(url, callback) {

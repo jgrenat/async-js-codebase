@@ -32,7 +32,7 @@ export function displayRegion(region, pokedex) {
 }
 
 export function displayPokemons(pokemons) {
-  console.log(pokemons);
+  console.log('pokemons loaded', pokemons);
 }
 
 export {default as co} from './assets/co/index.js';
