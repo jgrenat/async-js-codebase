@@ -1,36 +1,76 @@
-@font-face{
-  font-family: Pokemon;
-  src: url('./fonts/Pokemon Solid.ttf');
+@font-face {
+    font-family: Pokemon;
+    src: url('./fonts/Pokemon Solid.ttf');
 }
 
-@font-face{
-  font-family: PokemonImages;
-  src: url('./fonts/Pokemon Kiddy Ding.ttf');
+@font-face {
+    font-family: PokemonImages;
+    src: url('./fonts/Pokemon Kiddy Ding.ttf');
 }
 
 .header {
-  font-size: 5em;
-  font-family: Pokemon, 'Times New Roman', Times, serif;
-  text-align: center;
-  color: rgba(255, 217, 0, 0.897);
-  text-shadow: 2px 5px rgba(0, 0, 0, 0.1);
-  -webkit-text-stroke: 2px blue;
-  letter-spacing: 0.15em;
+    font-size: 5em;
+    font-family: Pokemon, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgba(255, 217, 0, 0.897);
+    text-shadow: 2px 5px rgba(0, 0, 0, 0.1);
+    -webkit-text-stroke: 2px blue;
+    letter-spacing: 0.15em;
 }
 
 .header::before, .header::after {
-  font-family: PokemonImages;
-  text-shadow: none;
-  -webkit-text-stroke: 0px;
-  color: black;
+    font-family: PokemonImages;
+    text-shadow: none;
+    -webkit-text-stroke: 0px;
+    color: black;
 }
 
 .header::before {
-  content: 'E';
-  padding-right: 0.5em;
+    content: 'E';
+    padding-right: 0.5em;
 }
 
 .header::after {
-  content: 'A';
-  padding-left: 0.5em;
+    content: 'A';
+    padding-left: 0.5em;
+}
+
+.region h2 {
+    margin-bottom: 0;
+}
+
+.region h2 + div {
+    margin-bottom: 0.83em;
+}
+
+section {
+    padding: 10px;
+    margin-left: 10px;
+    border: black 2px solid;
+    border-radius: 5%;
+}
+
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    width: 25%;
+}
+
+.pokemon h3 {
+    display: inline-block;
+    padding-right: 5px;
+    margin: 0;
+}
+
+article {
+    padding-top: 5px;
 }

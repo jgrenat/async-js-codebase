@@ -22,7 +22,11 @@ export function getPokemonsFromPokedex(pokedex, callback) {
       const pokemons = pokedexDetails.pokemon_entries.map(
         entry => entry.pokemon_species,
       );
-      callback(null, pokemons);
+      const description = pokedexDetails.descriptions.find(
+        pokedexD => pokedexD.language.name==="fr"
+      );
+
+      callback(null, {pokemons, description});
     },
   );
 }

@@ -3,9 +3,10 @@ import {
   getPokemonsFromPokedex,
   getRegionDetails,
   getPokemonDetails,
-  defaultPokedex,
+  defaultPokedex
 } from './pokemon-api.js';
-import {after, pick, pickOne, displayRegion, displayPokemons} from './utils.js';
+
+import {after, pick, pickOne, displayRegion, displayPokemons, displayRegionDescription} from './utils.js';
 
 getRegions((error, regions) => {
   if (error) {
@@ -23,13 +24,14 @@ getRegions((error, regions) => {
     const pokedex = pickPokedex(regionDetails);
     displayRegion(regionDetails, pokedex);
 
-    getPokemonsFromPokedex(pokedex, (error, pokemonsList) => {
+    getPokemonsFromPokedex(pokedex, (error, {pokemons, description}) => {
       if (error) {
         console.error(error);
         return;
       }
 
-      const randomPokemons = pick(pokemonsList, 8);
+      const randomPokemons = pick(pokemons, 8);
+      displayRegionDescription(description);
 
       getPokemonsDetails(randomPokemons, (error, pokemons) => {
         if (error) {
