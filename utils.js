@@ -72,7 +72,7 @@ export function displayPokemons(pokemons) {
 
 
 export function displayCards(cards) {
-  const template = `<img src="{{url}}" alt="{{name}}" class="card">`;
+  const template = `<div class="card"><img src="{{url}}" alt="{{name}}"></div>`;
   document.getElementById('js-cardsList').innerHTML = cards.map(card => {
     return template.replace('{{url}}', card.imageUrl).replace('{{name}}', card.name);
   }).join('\n');

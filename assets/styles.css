@@ -82,8 +82,12 @@ article {
 }
 
 .card {
-    margin: 1em;
-    width: 18%;
+    margin: 1vw;
+    width: 20%;
+}
+
+.card img {
+    width: 100%;
 }
 
 .searchForm {
