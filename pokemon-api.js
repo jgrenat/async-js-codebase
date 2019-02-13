@@ -54,3 +54,8 @@ function makeRequest(url, callback) {
 export const defaultPokedex = {
   name: 'kanto',
 };
+
+
+export function findCards(searchString, callback) {
+  return makeRequest(`https://api.pokemontcg.io/v1/cards?name=${searchString}&pageSize=15&contains=imageUrl`, callback);
+}

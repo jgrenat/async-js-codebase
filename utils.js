@@ -70,4 +70,12 @@ export function displayPokemons(pokemons) {
   });
 }
 
+
+export function displayCards(cards) {
+  const template = `<img src="{{url}}" alt="{{name}}" class="card">`;
+  document.getElementById('js-cardsList').innerHTML = cards.map(card => {
+    return template.replace('{{url}}', card.imageUrl).replace('{{name}}', card.name);
+  }).join('\n');
+}
+
 export {default as co} from './assets/co/index.js';
